@@ -36,6 +36,79 @@ header {
     text-align: center;
     margin-bottom: 50px;
     animation: slideDown 0.6s ease-out;
+    position: relative;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    background: var(--surface);
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Archivo', sans-serif;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-secondary:hover {
+    background: var(--accent);
+    color: var(--bg);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
+}
+
+.btn-coffee {
+    background: linear-gradient(135deg, #ffdd00 0%, #ff6f00 100%);
+    border: none;
+    color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(255, 221, 0, 0.03);
+}
+
+.btn-coffee:hover {
+    background: linear-gradient(135deg, #ffed4e 0%, #ff8533 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 221, 0, 0.05);
+    color: #1a1a1a;
+}
+
+.btn-sponsor {
+    background: linear-gradient(135deg, #ea4aaa 0%, #ff6b9d 100%);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(234, 74, 170, 0.03);
+}
+
+.btn-sponsor:hover {
+    background: linear-gradient(135deg, #ff5bb8 0%, #ff7aac 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(234, 74, 170, 0.05);
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .header-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 @keyframes slideDown {
