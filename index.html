@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDAH Assistant Setup Projet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Assistant Setup Projet</h1>
+            <p class="subtitle">Configuration de projet adaptée au TDAH</p>
+        </header>
+
+        <div class="card">
+            <h2><span class="step-number">1</span> Définis ton projet</h2>
+
+            <label for="projectName">Nom du projet</label>
+            <input type="text" id="projectName" placeholder="ex: habit-tracker">
+            <p class="example">Utilise des tirets, pas d'espaces</p>
+
+            <label for="projectGoal">Qu'est-ce que tu veux créer et pourquoi ?</label>
+            <textarea id="projectGoal" placeholder="ex: Je veux créer un tracker d'habitudes pour suivre mes routines quotidiennes et visualiser ma progression"></textarea>
+
+            <div class="tip">
+                <strong>💡 Conseil TDAH</strong>
+                Sois TRÈS spécifique. Plus c'est clair maintenant, moins tu auras envie d'abandonner plus tard.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="step-number">2</span> Technologies</h2>
+
+            <label for="techStack">Stack technique (optionnel)</label>
+            <input type="text" id="techStack" placeholder="ex: HTML/CSS/JS vanilla, ou React + Tailwind, ou Node.js + Express">
+            <p class="example">Laisse vide si tu veux que l'IA décide</p>
+
+            <label for="experience">Ton niveau</label>
+            <select id="experience">
+                <option value="debutant">Débutant (j'apprends les bases)</option>
+                <option value="intermediaire">Intermédiaire (je connais les fondamentaux)</option>
+                <option value="avance">Avancé (je suis à l'aise)</option>
+            </select>
+        </div>
+
+        <div class="card">
+            <h2><span class="step-number">3</span> Génère ta structure</h2>
+
+            <div class="tip">
+                <strong>⚡ Que va faire cet outil ?</strong>
+                Il va générer un prompt optimisé pour demander à ton IA préférée (ChatGPT, Claude, etc...) de créer toute la structure de ton projet : roadmap détaillée, arborescence de fichiers, et instructions Git.
+            </div>
+
+            <button id="generateBtn" onclick="generateSetup()">Générer le Setup Complet</button>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Génération en cours...</p>
+            </div>
+
+            <div class="output" id="output">
+                <button class="copy-btn" onclick="copyToClipboard()">Copier</button>
+                <div id="outputContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
