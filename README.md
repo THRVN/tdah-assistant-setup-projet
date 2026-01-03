@@ -30,13 +30,13 @@ Ou clique sur 👉​ [assistant-setup-projet-tdah](https://thrvn.github.io/assi
 ### Localement
 ```bash
 # Clone le repo
-git clone https://github.com/thrvn/assistant-setup-projet-tdah.git
-cd tdah-dev-setup
+git clone https://github.com/THRVN/assistant-setup-projet-tdah.git
+cd assistant-setup-projet-tdah
 
 # Ouvre le fichier HTML dans ton navigateur
-open tdah-dev-setup.html  # macOS
-xdg-open tdah-dev-setup.html  # Linux
-start tdah-dev-setup.html  # Windows
+open index.html  # macOS
+xdg-open index.html  # Linux
+start index.html  # Windows
 ```
 
 ## 📋 Comment ça marche
