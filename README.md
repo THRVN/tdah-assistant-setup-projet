@@ -91,7 +91,7 @@ Cet outil s'appuie sur une méthode éprouvée pour le TDAH :
 4. **Premier commit** : Point de sauvegarde zéro
 5. **Routine de session** : Commit à chaque fin de session + résumé IA
 
-➡️ **[Lire le guide complet](GUIDE-README.html)**
+➡️ **[Lire le guide complet](GUIDE.html)**
 
 ## 💡 Conseils d'utilisation
 

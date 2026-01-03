@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Pratique - Développement Web avec TDAH</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0d1117;
+            --bg-secondary: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-bright: #f0f6fc;
+            --text-dim: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79c0ff;
+            --success: #3fb950;
+            --warning: #d29922;
+            --code-bg: #161b22;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1012px;
+            margin: 0 auto;
+            padding: 32px 16px;
+        }
+
+        .header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-top: 32px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        .note {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 6px;
+        }
+
+        .note strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .warning {
+            border-left-color: var(--warning);
+        }
+
+        .warning strong {
+            color: var(--warning);
+        }
+
+        .success {
+            border-left-color: var(--success);
+        }
+
+        .success strong {
+            color: var(--success);
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--text-bright);
+        }
+
+        pre {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        ul, ol {
+            margin: 16px 0;
+            padding-left: 32px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        th {
+            background: var(--code-bg);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-bright);
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+            text-transform: uppercase;
+        }
+
+        .badge-step {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .badge-important {
+            background: var(--warning);
+            color: var(--bg);
+        }
+
+        .step-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .step-number {
+            background: var(--accent);
+            color: var(--bg);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin: 0;
+        }
+
+        .toc {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: var(--text-bright);
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin: 8px 0;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .emoji {
+            font-style: normal;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 32px 0;
+        }
+
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .step-container {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><span class="emoji">🧠</span> Guide Pratique : Développement Web avec TDAH</h1>
+            <p class="subtitle">Une méthode structurée pour coder sans se perdre ni tout recommencer</p>
+        </div>
+
+        <div class="toc">
+            <h3>Table des matières</h3>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#methode">La Méthode en 5 Étapes</a></li>
+                <li><a href="#difficultes">Gérer les Moments Difficiles</a></li>
+                <li><a href="#templates">Templates des Fichiers</a></li>
+                <li><a href="#conseils">Conseils Supplémentaires</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </div>
+
+        <h2 id="introduction">Introduction</h2>
+        
+        <p>Ce guide est conçu pour t'aider à travailler de manière organisée sur tes projets de développement web en tenant compte des défis spécifiques du TDAH :</p>
+        
+        <ul>
+            <li>Difficulté à maintenir l'attention sur des tâches longues</li>
+            <li>Intolérance à la frustration face aux obstacles</li>
+            <li>Tendance à se disperser et à abandonner les projets</li>
+            <li>Besoin de gratification immédiate</li>
+            <li>Difficulté à se rappeler où on en était</li>
+        </ul>
+
+        <div class="note success">
+            <strong><span class="emoji">✨</span> Le principe clé</strong>
+            Cette méthode transforme ton cerveau TDAH en allié plutôt qu'en obstacle. Elle crée des points de victoire fréquents, externalise ta mémoire, et t'empêche de te perdre.
+        </div>
+
+        <h2 id="methode">La Méthode en 5 Étapes</h2>
+
+        <p>Cette méthode a été optimisée pour le TDAH en créant des points de reprise clairs, en externalisant ta planification, et en générant des victoires fréquentes.</p>
+
+        <div class="step-container">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Définir Clairement l'Objectif</h3>
+            </div>
+            
+            <p>Avant toute chose, écris en <strong>UNE phrase</strong> ce que tu veux réaliser. Plus c'est précis, moins tu auras envie d'abandonner.</p>
+            
+            <h4>Format recommandé :</h4>
+            <pre><code>"Je veux créer [QUOI] pour [QUI/POURQUOI]"</code></pre>
+            
+            <h4>Exemples :</h4>
+            <ul>
+                <li>Je veux créer un tracker d'habitudes pour suivre mes routines quotidiennes</li>
+                <li>Je veux créer un portfolio pour montrer mes projets aux recruteurs</li>
+                <li>Je veux créer un timer Pomodoro pour améliorer ma productivité</li>
+            </ul>
+
+            <div class="note warning">
+                <strong><span class="emoji">💡</span> Pourquoi c'est crucial</strong>
+                Ton cerveau TDAH a besoin d'un objectif clair et motivant. Sans cela, tu vas te disperser ou recommencer au moindre obstacle. La clarté de l'objectif = ta motivation à long terme.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Générer une Roadmap Détaillée avec l'IA</h3>
+            </div>
+            
+            <p>Demande à Claude (ou une autre IA) de te créer une roadmap découpée en <strong>micro-étapes de 30 minutes maximum</strong>.</p>
+            
+            <h4>Prompt suggéré :</h4>
+            <pre><code>Je veux créer [ton projet]. Peux-tu me faire une roadmap 
+découpée en micro-étapes de 30 minutes maximum chacune ? 
+Organise par ordre logique et précise les fichiers à créer.</code></pre>
+
+            <h4>Ce que doit contenir chaque étape :</h4>
+            <ul>
+                <li>Un titre clair et actionnable</li>
+                <li>Une durée estimée (15-30 min max)</li>
+                <li>Les actions concrètes à réaliser</li>
+                <li>Les fichiers concernés</li>
+                <li>Le résultat attendu</li>
+            </ul>
+
+            <div class="note">
+                <strong><span class="emoji">💡</span> Astuce TDAH</strong>
+                Copie-colle la roadmap générée dans un fichier <code>ROADMAP.md</code> à la racine de ton projet. Ce fichier est ta <strong>carte au trésor</strong> - tu y reviendras à chaque session.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Créer l'Arborescence Complète</h3>
+            </div>
+            
+            <p>Demande à l'IA de générer l'arborescence complète de tous les fichiers et dossiers nécessaires.</p>
+            
+            <h4>Structure recommandée :</h4>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fichier</th>
+                        <th>Utilité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>ROADMAP.md</code></td>
+                        <td>Ta carte au trésor - toutes les étapes numérotées</td>
+                    </tr>
+                    <tr>
+                        <td><code>JOURNAL.md</code></td>
+                        <td>Notes de tes sessions et victoires</td>
+                    </tr>
+                    <tr>
+                        <td><code>BLOCAGES.md</code></td>
+                        <td>Documentation de tes difficultés et solutions</td>
+                    </tr>
+                    <tr>
+                        <td><code>TODO.md</code></td>
+                        <td>Tâche en cours + 3 prochaines</td>
+                    </tr>
+                    <tr>
+                        <td><code>README.md</code></td>
+                        <td>Description du projet</td>
+                    </tr>
+                    <tr>
+                        <td><code>src/</code></td>
+                        <td>Ton code source</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note warning">
+                <strong><span class="emoji">⚡</span> Important</strong>
+                Crée <strong>TOUS</strong> ces fichiers dès le début, même vides. Ça rend le projet tangible et moins abstrait pour ton cerveau. Le simple fait de voir la structure complète réduit l'anxiété de démarrage.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <h3 class="step-title">Premier Commit Git</h3>
+            </div>
+            
+            <p>Initialise ton dépôt Git et fais ton premier commit avec toute la structure.</p>
+            
+            <h4>Commandes à exécuter :</h4>
+            <pre><code>git init
+git add .
+git commit -m "Initial setup - Structure du projet + roadmap"
+git remote add origin [ton-repo-url]
+git push -u origin main</code></pre>
+
+            <div class="note success">
+                <strong><span class="emoji">🎯</span> Pourquoi c'est essentiel</strong>
+                Ce premier commit est ton <strong>point de sauvegarde zéro</strong>. Même si tu te sens nul plus tard, tu sauras exactement d'où tu es parti. Git devient ton filet de sécurité psychologique.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <h3 class="step-title">Routine de Session de Dev</h3>
+            </div>
+            
+            <h4><span class="emoji">🚀</span> AU DÉBUT de chaque session :</h4>
+            <ol>
+                <li>Ouvre <code>ROADMAP.md</code></li>
+                <li>Lis ta prochaine micro-tâche</li>
+                <li>Lance un timer de 25 minutes (Pomodoro)</li>
+                <li>Code sans distraction</li>
+            </ol>
+
+            <h4><span class="emoji">✅</span> À LA FIN de chaque session (CRITIQUE) :</h4>
+            <pre><code>git add .
+git commit -m "Description précise de ce que tu as fait"
+git push</code></pre>
+
+            <h4><span class="emoji">🤖</span> Puis demande à l'IA :</h4>
+            <pre><code>Voici mon dernier commit : [ton message]
+Voici où j'en suis : [décris brièvement]
+Peux-tu me faire un résumé de ce que j'ai accompli 
+et me dire ma PROCHAINE tâche pour la prochaine session ?</code></pre>
+
+            <p><strong>Copie cette réponse dans <code>JOURNAL.md</code> avec la date</strong></p>
+
+            <div class="note success">
+                <strong><span class="emoji">🔄</span> Le secret</strong>
+                Cette routine crée une boucle de feedback constante. Chaque commit = une victoire. Chaque résumé = clarté sur ta progression. Tu ne peux plus te perdre.
+            </div>
+        </div>
+
+        <h2 id="difficultes">Gérer les Moments Difficiles</h2>
+
+        <h3><span class="emoji">🔄</span> Quand tu veux tout recommencer</h3>
+        
+        <ol>
+            <li><strong>STOP</strong> - Ne prends AUCUNE décision maintenant</li>
+            <li>Va lire <code>JOURNAL.md</code> - relis tes victoires passées</li>
+            <li>Regarde tes commits Git - preuve concrète de ta progression</li>
+            <li>Crée une branche <code>experiment</code> si tu veux vraiment recommencer (ça te donne la sensation du nouveau sans perdre ton travail)</li>
+            <li>Prends une pause de 10 minutes, puis reviens</li>
+        </ol>
+
+        <div class="note warning">
+            <strong><span class="emoji">⚠️</span> Rappel important</strong>
+            99% du temps, ce n'est pas le projet qui est mauvais, c'est la frustration qui parle. Ne prends jamais de décision importante quand tu es frustré.
+        </div>
+
+        <h3><span class="emoji">🧗</span> Quand un problème te paraît énorme</h3>
+        
+        <ol>
+            <li>Ouvre <code>BLOCAGES.md</code></li>
+            <li>Écris : "Ce qui me bloque", "Ce que j'ai essayé", "Ma question"</li>
+            <li>Demande à l'IA de découper le problème en 3 micro-étapes encore plus petites</li>
+            <li>Applique la <strong>règle des 15 minutes</strong> : cherche pendant 15 min chrono, pas plus</li>
+            <li>Si toujours bloqué : laisse tomber <strong>POUR AUJOURD'HUI</strong> (pas pour toujours)</li>
+        </ol>
+
+        <div class="note">
+            <strong><span class="emoji">💡</span> La vérité sur le développement</strong>
+            Tous les devs, même seniors, passent 70% de leur temps à débugger et chercher des solutions. La différence n'est pas qu'ils ne rencontrent pas de difficulté - c'est qu'ils ont appris à tolérer l'inconfort de ne pas savoir. Cette tolérance se développe avec la pratique.
+        </div>
+
+        <h2 id="templates">Templates des Fichiers de Suivi</h2>
+
+        <h3><code>ROADMAP.md</code></h3>
+        <pre><code># Roadmap - [Nom du Projet]
+
+## Objectif
+[Description en une phrase]
+
+## Étapes
+
+### [Étape 1] Titre de l'étape (30 min)
+- Action 1
+- Action 2
+- Fichiers : file1.js, file2.css
+- Résultat attendu : [description]
+- [ ] Terminé
+
+### [Étape 2] Titre de l'étape (25 min)
+- Action 1
+- Action 2
+- Fichiers : file3.html
+- Résultat attendu : [description]
+- [ ] Terminé
+
+...</code></pre>
+
+        <h3><code>TODO.md</code></h3>
+        <pre><code># TODO
+
+## En cours
+- [ ] [Tâche actuelle que je suis en train de faire]
+
+## Prochaines étapes
+- [ ] [Prochaine tâche 1]
+- [ ] [Prochaine tâche 2]
+- [ ] [Prochaine tâche 3]
+
+## Terminé
+- [x] [Tâche complétée 1] - [date]
+- [x] [Tâche complétée 2] - [date]</code></pre>
+
+        <h3><code>JOURNAL.md</code></h3>
+        <pre><code># Journal de Dev
+
+## [Date - ex: 03/01/2026]
+**Durée :** [temps passé - ex: 45 minutes]
+
+**Accompli :**
+- [ce que j'ai fait]
+- [bug résolu]
+- [fonctionnalité ajoutée]
+
+**Prochaine session :**
+- [ce que je dois faire ensuite]
+
+**État d'esprit :** [comment je me sens - optionnel mais utile]
+
+**Notes :**
+- [remarques diverses]
+
+---</code></pre>
+
+        <h3><code>BLOCAGES.md</code></h3>
+        <pre><code># Blocages & Solutions
+
+## [Date] - [Titre du problème]
+
+**Ce qui me bloque :**
+[description détaillée du problème]
+
+**Ce que j'ai déjà essayé :**
+- [tentative 1]
+- [tentative 2]
+- [tentative 3]
+
+**Solution trouvée :**
+[description de la solution qui a fonctionné]
+
+**Leçon apprise :**
+[ce que j'ai compris et retiens pour la prochaine fois]
+
+---</code></pre>
+
+        <h2 id="conseils">Conseils Supplémentaires pour le TDAH</h2>
+
+        <div class="step-container">
+            <h3><span class="emoji">🎯</span> Commence PETIT</h3>
+            <p>Ton premier projet avec cette méthode devrait être <strong>MINUSCULE</strong> (une page HTML avec un compteur en JavaScript). L'objectif est de <strong>FINIR</strong> pour la première fois et prouver à ton cerveau que c'est possible.</p>
+        </div>
+
+        <div class="step-container">
+            <h3><span class="emoji">⏰</span> Respecte tes cycles</h3>
+            <p>Identifie tes moments de meilleure productivité (matin/soir) et code à ces heures-là. Ne force pas pendant tes moments creux - utilise-les pour des tâches passives comme lire de la documentation.</p>
+        </div>
+
+        <div class="step-container">
+            <h3><span class="emoji">🚫</span> Une tâche à la fois</h3>
+            <p>Quand une "idée brillante" arrive en plein milieu d'une tâche (ça arrivera), note-la immédiatement dans un fichier <code>IDEES.md</code> et <strong>RETOURNE</strong> à ta tâche. Ne commence jamais deux choses simultanément.</p>
+        </div>
+
+        <div class="step-container">
+            <h3><span class="emoji">🔄</span> Accepte le brouillon</h3>
+            <p>Ton premier code sera imparfait. C'est <strong>NORMAL</strong>. Tu refactoriseras plus tard dans un moment d'hyperfocus dédié à ça. Cette approche évite la paralysie du perfectionnisme.</p>
+        </div>
+
+        <div class="step-container">
+            <h3><span class="emoji">👥</span> Body doubling</h3>
+            <p>Travaille en présence de quelqu'un (même en visio silencieuse via Discord, Zoom, etc.). Le TDAH répond bien à la présence sociale. Il existe des communautés de "body doubling" pour devs.</p>
+        </div>
+
+        <div class="step-container">
+            <h3><span class="emoji">📱</span> Bloque les distractions</h3>
+            <p>Ferme <strong>TOUS</strong> les onglets non essentiels. Désactive les notifications. Utilise des bloqueurs de sites (Cold Turkey, Freedom). Un seul écran peut parfois mieux fonctionner que plusieurs.</p>
+        </div>
+
+        <div class="step-container">
+            <h3><span class="emoji">🔧</span> Automatise tout</h3>
+            <p>Mets en place des systèmes qui compensent les oublis : linters automatiques (ESLint), formatage automatique (Prettier), hot reload, scripts de déploiement. Moins tu as de décisions manuelles à prendre, mieux c'est.</p>
+        </div>
+
+        <div class="step-container">
+            <h3><span class="emoji">⏱️</span> Utilise des deadlines externes</h3>
+            <p>Le TDAH répond bien à la pression externe. Fixe-toi des deadlines artificielles, partage tes objectifs avec quelqu'un, ou engage-toi publiquement (Twitter, Discord, blog).</p>
+        </div>
+
+        <h2 id="conclusion">Conclusion</h2>
+
+        <p>Cette méthode n'est pas une solution miracle, mais un <strong>système conçu pour compenser les défis spécifiques du TDAH</strong>. Elle transforme ton cerveau qui cherche la dopamine immédiate en allié :</p>
+
+        <ul>
+            <li>Chaque micro-tâche complétée = dopamine</li>
+            <li>Chaque commit = victoire visible</li>
+            <li>Chaque entrée de journal = preuve de progression</li>
+            <li>Chaque fichier de suivi = mémoire externalisée</li>
+        </ul>
+
+        <div class="note success">
+            <strong><span class="emoji">💪</span> Le plus important</strong>
+            Sois patient avec toi-même. Apprendre à tolérer la frustration et terminer un projet sont des compétences qui se développent. Chaque projet terminé rendra le suivant plus facile.
+        </div>
+
+        <hr>
+
+        <div style="background: var(--bg-secondary); border: 2px solid var(--success); border-radius: 6px; padding: 24px; margin: 32px 0; text-align: center;">
+            <h3 style="color: var(--success); margin-top: 0;">Tu n'es pas nul.</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 0;">Ton cerveau fonctionne différemment, et cette méthode est conçue pour ça.</p>
+        </div>
+
+        <div class="footer">
+            <p><strong>Bon courage dans ton développement ! 🚀</strong></p>
+            <p style="font-size: 0.9rem; margin-top: 16px;">
+                Si cette méthode t'aide, n'hésite pas à la partager avec d'autres devs qui ont un TDAH.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
