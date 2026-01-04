@@ -64,6 +64,13 @@ header {
     gap: 8px;
 }
 
+strong a {
+    color: var(--accent);
+    font-weight: 600;
+    font-family: 'Archivo', sans-serif;
+    text-decoration: none;
+}
+
 .btn-secondary:hover {
     background: var(--accent);
     color: var(--bg);
